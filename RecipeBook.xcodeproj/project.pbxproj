@@ -14,6 +14,7 @@
 		713C5AE21AB8D0CF005E3031 /* RecipeBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C5AE11AB8D0CF005E3031 /* RecipeBookTests.swift */; };
 		713C5AEE1AB8DD32005E3031 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C5AED1AB8DD32005E3031 /* RecipeViewController.swift */; };
 		713C5AF21AB8E05B005E3031 /* IngredientItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C5AF11AB8E05B005E3031 /* IngredientItem.swift */; };
+		713C5AF41AB8E55F005E3031 /* IngredientDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713C5AF31AB8E55F005E3031 /* IngredientDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		713C5AE11AB8D0CF005E3031 /* RecipeBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBookTests.swift; sourceTree = "<group>"; };
 		713C5AED1AB8DD32005E3031 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		713C5AF11AB8E05B005E3031 /* IngredientItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientItem.swift; sourceTree = "<group>"; };
+		713C5AF31AB8E55F005E3031 /* IngredientDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				713C5AEC1AB8D0FC005E3031 /* Model */,
 				713C5AEB1AB8D0F0005E3031 /* View and Controller */,
 				713C5ACF1AB8D0CF005E3031 /* Main.storyboard */,
+				713C5AF31AB8E55F005E3031 /* IngredientDetailViewController.swift */,
 				713C5AED1AB8DD32005E3031 /* RecipeViewController.swift */,
 				713C5AC91AB8D0CF005E3031 /* Supporting Files */,
 			);
@@ -234,6 +237,7 @@
 			files = (
 				713C5AEE1AB8DD32005E3031 /* RecipeViewController.swift in Sources */,
 				713C5ACC1AB8D0CF005E3031 /* AppDelegate.swift in Sources */,
+				713C5AF41AB8E55F005E3031 /* IngredientDetailViewController.swift in Sources */,
 				713C5AF21AB8E05B005E3031 /* IngredientItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
