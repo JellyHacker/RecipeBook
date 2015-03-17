@@ -10,11 +10,12 @@ import UIKit
 
 class RecipeViewController: UITableViewController {
     
-    var ingredients: [String]?
+    var ingredients: [IngredientItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = "Recipe"
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -30,7 +31,21 @@ class RecipeViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
-        return 0
+        return ingredients.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("IngredientCell") as UITableViewCell
+        let ingredient = ingredients[indexPath.row]
+        let amount = ingredient.amount
+        let units = ingredient.units
+        let amountUnitsString = "\(amount) \(units)"
+        
+        cell.textLabel?.text = ingredient.name
+        cell.detailTextLabel?.text = amountUnitsString
+        
+        return cell
     }
 
 }
