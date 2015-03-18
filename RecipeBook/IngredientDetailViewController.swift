@@ -52,6 +52,7 @@ class IngredientDetailViewController: UITableViewController, UITextFieldDelegate
         delegate?.ingredientDetailViewControllerDidCancel(self)
     }
     
+    // Automatically shifts to the next text field in line. This is not called on the last text field.
     @IBAction func nextTextField() {
         
         if nameTextField.isFirstResponder() {

@@ -430,6 +430,7 @@
 				713C5AE71AB8D0CF005E3031 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		713C5AE81AB8D0CF005E3031 /* Build configuration list for PBXNativeTarget "RecipeBookTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +439,7 @@
 				713C5AEA1AB8D0CF005E3031 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
