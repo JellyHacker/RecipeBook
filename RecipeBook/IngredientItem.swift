@@ -8,7 +8,7 @@
 
 import Foundation
 
-class IngredientItem {
+class IngredientItem: NSObject {
     
     var name: String = ""
     var amount: String = ""

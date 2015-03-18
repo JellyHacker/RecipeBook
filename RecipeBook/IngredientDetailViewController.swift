@@ -29,16 +29,40 @@ class IngredientDetailViewController: UITableViewController, UITextFieldDelegate
     
     @IBAction func done() {
         
-        let ingredient = IngredientItem()
-        ingredient.name = nameTextField.text
-        ingredient.amount = amountTextField.text
-        ingredient.units = unitsTextField.text
-        delegate?.ingredientDetailViewController(self, didFinishAddingIngredient: ingredient)
+        var ingredient = IngredientItem()
+        
+        if let ingredient = ingredientToEdit {
+            
+            ingredient.name = nameTextField.text
+            ingredient.amount = amountTextField.text
+            ingredient.units = unitsTextField.text
+            delegate?.ingredientDetailViewController(self, didFinishEditingIngredient: ingredient)
+        } else {
+            
+            ingredient.name = nameTextField.text
+            ingredient.amount = amountTextField.text
+            ingredient.units = unitsTextField.text
+            delegate?.ingredientDetailViewController(self, didFinishAddingIngredient: ingredient)
+        }
+        
     }
     
     @IBAction func cancel() {
     
         delegate?.ingredientDetailViewControllerDidCancel(self)
+    }
+    
+    @IBAction func nextTextField() {
+        
+        if nameTextField.isFirstResponder() {
+            
+            amountTextField.nextResponder()
+        } else if amountTextField.isFirstResponder() {
+            
+            unitsTextField.nextResponder()
+        } else {
+            
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

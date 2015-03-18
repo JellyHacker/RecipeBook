@@ -10,8 +10,14 @@ import UIKit
 
 class RecipeViewController: UITableViewController, IngredientDetailViewControllerDelegate {
     
-    var ingredients: [IngredientItem] = []
+    var ingredients: [IngredientItem]
 
+    required init(coder aDecoder: NSCoder) {
+        
+        ingredients = [IngredientItem]()
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,10 +47,18 @@ class RecipeViewController: UITableViewController, IngredientDetailViewControlle
         let amountUnitsString = "\(amount) \(units)"
         
         configureCellLabels(cell, withIngredientItem: ingredient)
-        //cell.textLabel?.text = ingredient.name
-        //cell.detailTextLabel?.text = amountUnitsString
         
         return cell
+    }
+    
+    // Swipe to delete method
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        ingredients.removeAtIndex(indexPath.row)
+        
+        let indexPaths = [indexPath]
+        
+        tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -95,15 +109,36 @@ class RecipeViewController: UITableViewController, IngredientDetailViewControlle
     
     func ingredientDetailViewController(controller: IngredientDetailViewController, didFinishEditingIngredient ingredient: IngredientItem) {
         
-        if let index = find(ingredients, ingredient) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+        let name = ingredient.name
+        let amount = ingredient.amount
+        let units = ingredient.units
+        
+        var index = 0
+        
+        for item in ingredients {
             
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            var counter = 0
+            
+            let itemName = item.name
+            let itemAmount = item.amount
+            let itemUnits = item.units
+            
+            if itemName == name && itemAmount == amount && itemUnits == units {
                 
+                index = counter
+                
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                    
+                    configureCellLabels(cell, withIngredientItem: ingredient)
+                }
             }
+            counter += 1
         }
         
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
 
 }
