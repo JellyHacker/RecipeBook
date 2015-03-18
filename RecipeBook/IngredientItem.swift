@@ -10,9 +10,9 @@ import Foundation
 
 class IngredientItem {
     
-    var name: String!
-    var amount: Double!
-    var units: String!
+    var name: String = ""
+    var amount: String = ""
+    var units: String = ""
     
     
 }
