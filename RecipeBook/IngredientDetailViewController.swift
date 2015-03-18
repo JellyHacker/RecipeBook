@@ -56,10 +56,10 @@ class IngredientDetailViewController: UITableViewController, UITextFieldDelegate
         
         if nameTextField.isFirstResponder() {
             
-            amountTextField.nextResponder()
+            amountTextField.becomeFirstResponder()
         } else if amountTextField.isFirstResponder() {
             
-            unitsTextField.nextResponder()
+            unitsTextField.becomeFirstResponder()
         } else {
             
         }

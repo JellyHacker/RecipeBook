@@ -75,6 +75,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" returnKeyType="done"/>
                                                     <connections>
+                                                        <action selector="nextTextField" destination="6gz-un-UGg" eventType="editingDidEndOnExit" id="yxC-IJ-jJT"/>
                                                         <outlet property="delegate" destination="6gz-un-UGg" id="Irl-WB-dnE"/>
                                                     </connections>
                                                 </textField>
@@ -91,6 +92,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     <connections>
+                                                        <action selector="nextTextField" destination="6gz-un-UGg" eventType="editingDidEndOnExit" id="Y1s-6W-UBt"/>
                                                         <outlet property="delegate" destination="6gz-un-UGg" id="sUb-6p-Ohq"/>
                                                     </connections>
                                                 </textField>
