@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ingredientDetailViewControllerDelegate: class {
+protocol IngredientDetailViewControllerDelegate: class {
     
     func ingredientDetailViewControllerDidCancel(controller: IngredientDetailViewController)
     func ingredientDetailViewController(controller: IngredientDetailViewController,
@@ -19,7 +19,8 @@ protocol ingredientDetailViewControllerDelegate: class {
 
 class IngredientDetailViewController: UITableViewController, UITextFieldDelegate {
     
-    weak var delegate: ingredientDetailViewControllerDelegate?
+    weak var delegate: IngredientDetailViewControllerDelegate?
+    var ingredientToEdit: IngredientItem?
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
@@ -36,14 +37,28 @@ class IngredientDetailViewController: UITableViewController, UITextFieldDelegate
     }
     
     @IBAction func cancel() {
-        
+    
         delegate?.ingredientDetailViewControllerDidCancel(self)
     }
     
-    override func viewDidLoad() {
-        tableView.rowHeight = 44
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
         
+        super.viewWillAppear(animated)
+        nameTextField.becomeFirstResponder()
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        tableView.rowHeight = 44
+        // Important in order to allow an existing ingredient to be edited
+        if let ingredient = ingredientToEdit {
+            title = "Edit Ingredient"
+            nameTextField.text = ingredient.name
+            amountTextField.text = ingredient.amount
+            unitsTextField.text = ingredient.units
+            doneBarButton.enabled = true    
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,15 +72,43 @@ class IngredientDetailViewController: UITableViewController, UITextFieldDelegate
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // This will enable or disable the done button accordingly as to whether or not text has been entered in each of the text fields
-        let oldNameText: NSString = nameTextField.text
-        let oldAmountText: NSString = amountTextField.text
-        let oldUnitsText: NSString = unitsTextField.text
         
-        let newNameText: NSString = oldNameText.stringByReplacingCharactersInRange(range, withString: string)
-        let newAmountText: NSString = oldAmountText.stringByReplacingCharactersInRange(range, withString: string)
-        let newUnitsText: NSString = oldUnitsText.stringByReplacingCharactersInRange(range, withString: string)
+        var oldNameText: NSString = ""
+        var newNameText: NSString = ""
+        var oldAmountText: NSString = ""
+        var newAmountText: NSString = ""
+        var oldUnitsText: NSString = ""
+        var newUnitsText: NSString = ""
         
-        if newNameText.length > 0 && newAmountText.length > 0 && newUnitsText.length > 0 {
+        var nameLength: Int = 0
+        var amountLength: Int = 0
+        var unitsLength: Int = 0
+        
+        if textField == nameTextField {
+            
+            oldNameText = nameTextField.text
+            newNameText = oldNameText.stringByReplacingCharactersInRange(range, withString: string)
+        } else if textField == amountTextField {
+            
+            oldAmountText = amountTextField.text
+            newAmountText = oldAmountText.stringByReplacingCharactersInRange(range, withString: string)
+        } else if textField == unitsTextField {
+        
+            oldUnitsText = unitsTextField.text
+            newUnitsText = oldUnitsText.stringByReplacingCharactersInRange(range, withString: string)
+        } else {
+        
+        }
+        
+        let finalNameText: NSString = nameTextField.text
+        let finalAmountText: NSString = amountTextField.text
+        let finalUnitsText: NSString = unitsTextField.text
+        
+        nameLength = finalNameText.length
+        amountLength = finalAmountText.length
+        unitsLength = finalUnitsText.length
+
+        if nameLength > 0 && amountLength > 0 && unitsLength > 0 {
             doneBarButton.enabled = true
         } else {
             doneBarButton.enabled = false

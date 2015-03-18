@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipeViewController: UITableViewController {
+class RecipeViewController: UITableViewController, IngredientDetailViewControllerDelegate {
     
     var ingredients: [IngredientItem] = []
 
@@ -44,6 +44,47 @@ class RecipeViewController: UITableViewController {
         cell.detailTextLabel?.text = amountUnitsString
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let navigationController = segue.destinationViewController as UINavigationController
+        let controller = navigationController.topViewController as IngredientDetailViewController
+        
+        controller.delegate = self
+        
+        if segue.identifier == "AddIngredient" {
+            
+        } else if segue.identifier == "EditIngredient" {
+            
+            if let indexPath = tableView.indexPathForCell(sender as UITableViewCell) {
+                controller.ingredientToEdit = ingredients[indexPath.row]
+            }
+        }
+    }
+    
+    func ingredientDetailViewControllerDidCancel(controller: IngredientDetailViewController) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func ingredientDetailViewController(controller: IngredientDetailViewController, didFinishAddingIngredient ingredient: IngredientItem) {
+        
+        let newRowIndex = ingredients.count
+        
+        ingredients.append(ingredient)
+        
+        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+        let indexPaths = [indexPath]
+        
+        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func ingredientDetailViewController(controller: IngredientDetailViewController, didFinishEditingIngredient ingredient: IngredientItem) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
