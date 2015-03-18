@@ -40,8 +40,9 @@ class RecipeViewController: UITableViewController, IngredientDetailViewControlle
         let units = ingredient.units
         let amountUnitsString = "\(amount) \(units)"
         
-        cell.textLabel?.text = ingredient.name
-        cell.detailTextLabel?.text = amountUnitsString
+        configureCellLabels(cell, withIngredientItem: ingredient)
+        //cell.textLabel?.text = ingredient.name
+        //cell.detailTextLabel?.text = amountUnitsString
         
         return cell
     }
@@ -61,6 +62,16 @@ class RecipeViewController: UITableViewController, IngredientDetailViewControlle
                 controller.ingredientToEdit = ingredients[indexPath.row]
             }
         }
+    }
+    
+    func configureCellLabels(cell: UITableViewCell, withIngredientItem ingredient: IngredientItem) {
+        
+        let amount = ingredient.amount
+        let units = ingredient.units
+        let amountUnitsString = "\(amount) \(units)"
+        
+        cell.textLabel?.text = ingredient.name
+        cell.detailTextLabel?.text = amountUnitsString
     }
     
     func ingredientDetailViewControllerDidCancel(controller: IngredientDetailViewController) {
@@ -83,6 +94,14 @@ class RecipeViewController: UITableViewController, IngredientDetailViewControlle
     }
     
     func ingredientDetailViewController(controller: IngredientDetailViewController, didFinishEditingIngredient ingredient: IngredientItem) {
+        
+        if let index = find(ingredients, ingredient) {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+                
+            }
+        }
         
         dismissViewControllerAnimated(true, completion: nil)
     }
