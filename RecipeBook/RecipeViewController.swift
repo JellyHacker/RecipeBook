@@ -17,7 +17,7 @@ class RecipeViewController: UITableViewController, IngredientDetailViewControlle
         ingredients = [IngredientItem]()
         super.init(coder: aDecoder)
         loadIngredients()
-        println(documentsDirectory())
+//println(documentsDirectory())
     }
     
     override func viewDidLoad() {
