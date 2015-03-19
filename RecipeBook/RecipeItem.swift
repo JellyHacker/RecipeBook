@@ -6,12 +6,16 @@
 //  Copyright (c) 2015 Vicinity inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class RecipeItem {
+class RecipeItem: NSObject {
     
     var name: String = ""
     var ingredients = [IngredientItem]()
     
-    
+    init(name: String) {
+        
+        self.name = name
+        super.init()
+    }
 }
