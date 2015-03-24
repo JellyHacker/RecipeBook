@@ -15,7 +15,19 @@ class RecipeListViewController: UITableViewController {
     required init(coder aDecoder: NSCoder) {
         
         recipeList = [RecipeItem]()
-        super.init()
+        super.init(coder: aDecoder)
+        
+        var recipe = RecipeItem(name: "Mac N Cheese")
+        recipeList.append(recipe)
+       
+        recipe = RecipeItem(name: "Pizza")
+        recipeList.append(recipe)
+        
+        recipe = RecipeItem(name: "Rice")
+        recipeList.append(recipe)
+        
+        recipe = RecipeItem(name: "Cookie")
+        recipeList.append(recipe)
     }
     
     override func viewDidLoad() {
@@ -61,7 +73,7 @@ class RecipeListViewController: UITableViewController {
         let segueIdentifier = "ShowRecipe"
         
         // First step towards sending the recipe object to the next view controller, so it knows which recipe to access
-        performSegueWithIdentifier(segueIdentifier, sender: recipe)
+        performSegueWithIdentifier(segueIdentifier, sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
