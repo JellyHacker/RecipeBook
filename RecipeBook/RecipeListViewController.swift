@@ -57,12 +57,15 @@ class RecipeListViewController: UITableViewController {
         
         if cell == nil {
             
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            // .Value1 sets gives the tableView cells a Right Detail style
+            cell = UITableViewCell(style: .Value1, reuseIdentifier: cellIdentifier)
         }
         
         let recipe = recipeList[indexPath.row]
+        
         cell.textLabel?.text = "RecipeName"
         cell.detailTextLabel?.text = "Difficulty"
+        cell.accessoryType = .DetailDisclosureButton
         
         return cell
     }
