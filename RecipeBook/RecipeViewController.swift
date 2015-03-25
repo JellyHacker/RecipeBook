@@ -10,14 +10,14 @@ import UIKit
 
 class RecipeViewController: UITableViewController, IngredientDetailViewControllerDelegate {
     
-    var recipe: RecipeItem!
+    //var recipe: RecipeItem!
     var ingredients: [IngredientItem]
 
     required init(coder aDecoder: NSCoder) {
         
         ingredients = [IngredientItem]()
         super.init(coder: aDecoder)
-        title = recipe.name
+        // title = recipe.name
         tableView.rowHeight = 44
         loadIngredients()
 //println(documentsDirectory())

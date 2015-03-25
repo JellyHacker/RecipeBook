@@ -196,7 +196,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Recipe List" id="gTp-Ui-TDn"/>
                     <connections>
-                        <segue destination="EVE-Kr-aB5" kind="show" id="TEZ-7N-A1v"/>
+                        <segue destination="EVE-Kr-aB5" kind="show" identifier="ShowRecipe" id="TEZ-7N-A1v"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQ4-S9-vkj" userLabel="First Responder" sceneMemberID="firstResponder"/>

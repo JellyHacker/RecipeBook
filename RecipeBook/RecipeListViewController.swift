@@ -78,7 +78,7 @@ class RecipeListViewController: UITableViewController {
         // First step towards sending the recipe object to the next view controller, so it knows which recipe to access
         performSegueWithIdentifier(segueIdentifier, sender: nil)
     }
-    
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         // Second step towards sending the recipe object to the next view controller, so it knows which recipe to access
@@ -89,7 +89,7 @@ class RecipeListViewController: UITableViewController {
             controller.recipe = sender as RecipeItem
         }
     }
-    
+    */
     
     
     
